@@ -1,4 +1,4 @@
-(defproject clj-template "0.8.0"
+(defproject clj-template "0.9.0"
   :description "Clojure template engine for generating HTML-based markup"
   :url "https://github.com/brennonyork/clj-template"
   :license {:name "Eclipse Public License"

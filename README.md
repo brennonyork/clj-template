@@ -37,6 +37,29 @@ which will output...
 </html>
 ```
 
+Now, when rendering this you might notice that the pesky `<br></br>` element turns into two separate `<br>` tags. To resolve this, and achieve the intended results, we suffix the function with a dash (i.e. `br-`) which will render an unbalanced node (i.e. `<br />`).
+
+Our modified code then looks like...
+
+```clojure
+(html
+  (head (title {:style "font-family:'Courier';"} "My Simple Web Site"))
+  (body (p "A paragraph of content.") (br-)
+        (p "Another paragraph of content")))
+```
+
+which renders...
+
+```html
+<html>
+  <head><title style="font-family:'Courier';">My Simple Web Site</title>
+  </head>
+  <body><p>A paragraph of content.</p><br />
+        <p>Another paragraph of content</p>
+  </body>
+</html>
+```
+
 ## License
 
 Copyright © 2014

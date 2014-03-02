@@ -29,3 +29,5 @@
    "wbr"])
 
 (core/assoc-to-fn html5-tag-list)
+(core/assoc-to-fn-unbalanced html5-tag-list)
+

@@ -27,3 +27,4 @@
    "var"])
 
 (core/assoc-to-fn html4-tag-list)
+(core/assoc-to-fn-unbalanced html4-tag-list)

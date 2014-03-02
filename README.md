@@ -2,7 +2,11 @@
 
 Ever begin to write HTML and feel the urge to gouge out your eyes? Ever realize you have to write XML and get the sudden urge to rip your hair out?
 
-Welcome `clj-template`, your savior.
+Welcome `clj-template`, a modern attempt to make writing HTML, XML, and other bracket-attribute structures simple, lightweight, and accessible to the Clojure community.
+
+The founding principle behind `clj-template` is that of binding HTML tags to Clojure functions and allowing attributes to be passed in as Clojure maps. Why would someone do this? Well, aside from being overly verbose when typing typical HTML, moving into a pure Clojure-based solution allows a new type of templating engine where the user can leverage all the power of Clojure to generate his web pages.
+
+Gone are the days of learning a given templating engine's DSL or wondering whether a given engine supports a certain data structure, looping capability, output function, etc. Purity in the Clojure language grants all the expressiveness of Clojure without any of the heartache of polyglot projects (i.e. mixing .html, .hbs, and .clj files). 
 
 ## Installation
 

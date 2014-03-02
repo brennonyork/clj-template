@@ -1,5 +1,6 @@
 (defproject clj-template "0.8.0"
-  :description "FIXME: write description"
+  :description "Clojure template engine for generating HTML-based markup"
+  :url "https://github.com/brennonyork/clj-template"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :min-lein-version "2.0.0"

@@ -5,6 +5,13 @@
 ;; ## HTML5 Tags
 ;;
 ;; This set contains all HTML5 tags as [specified by the W3C](http://dev.w3.org/html5/markup/elements.html)
+;;
+;; Additional tags from...
+;;   - data https://developer.mozilla.org/en-US/docs/Web/HTML/Element/data
+;;   - menuitem https://developer.mozilla.org/en-US/docs/Web/HTML/Element/menuitem
+;;   - main https://developer.mozilla.org/en-US/docs/Web/HTML/Element/main
+;;   - math https://developer.mozilla.org/en-US/docs/Web/MathML/Element/math
+;;   - svg https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg
 (def html5-tag-list
   ["a" "abbr" "address" "area" "article" "aside" "audio"
    "b" "base" "bdi" "bdo" "blockquote" "body" "br" "button"

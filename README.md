@@ -90,6 +90,50 @@ which renders...
 </html>
 ```
 
+## User-defined bracket-attribute tags
+
+`clj-template` is all based off of two core functions (in `core.clj` no less); those being `assoc-to-fn` and `assoc-to-fn-unbalanced`. Both functions take a vector of strings and then drop those strings as first-class functions into the currently called namespace. That said, if one wanted to generate bracket-attribute documents with balanced tags for:
+
+* addr
+* doc
+* text
+
+...and unbalanced tags for:
+
+* name
+
+The code would then look as follows:
+
+```clojure
+(ns foo.bar
+  (:refer-clojure :rename {name clj-name})
+  (:require clj-template.core))
+  
+(clj-template.core/assoc-to-fn ["addr" "doc" "text"])
+(clj-template.core/assoc-to-fn-unbalanced ["name"])
+
+(doc
+ (addr
+  (name- {:first "Bill" :last "Edwards"})
+  (text "Some additional text"))
+ (addr {:ref "uri://localhost"}
+  (name- {:first "Jim" :last "Jones"})))
+```
+
+...which would output:
+
+```xml
+<doc>
+  <addr>
+    <name first="Bill" last="Edwards" />
+    <text>Some additional text</text>
+  </addr>
+  <addr>
+    <name first="Jim" last="Jones" />
+  </addr>
+</doc>
+```
+
 ## License
 
 Copyright © 2014

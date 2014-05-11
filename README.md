@@ -34,11 +34,13 @@ To refer Clojure into a project you can use the following example namespace as a
   (:require [clj-template.html5 :refer :all]))
 ```
 
-This refers all `clojure.core` into the `foo.bar` namespace (substitute for your project) and renames...
+This refers all `clojure.core` into the `foo.bar` namespace (substitute for your project) and renames:
 
 * `map` to `clj-map`
 * `meta` to `clj-meta`
 * and `time` to `clj-time`
+
+...which removes all collision issues when working with html-based `clj-template` capabilities.
 
 ## Usage
 

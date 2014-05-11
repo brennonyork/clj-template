@@ -8,13 +8,37 @@ The founding principle behind `clj-template` is that of binding HTML tags to Clo
 
 Gone are the days of learning a given templating engine's DSL or wondering whether a given engine supports a certain data structure, looping capability, output function, etc. Purity in the Clojure language grants all the expressiveness of Clojure without any of the heartache of polyglot projects (i.e. mixing .html, .hbs, and .clj files). 
 
+## Key Features
+
+1. First class Clojure functions for bracket-attribute tags
+2. HTML and HTML5 support built in
+3. Dead simple to use
+4. Works with Ring and other Clojure webstack frameworks
+5. Support for generating user-defined tags
+
 ## Installation
 
 To jump in and get started simply add:
 
-* `[clj-template "0.9.1"]` to your project.clj file
+* `[clj-template "1.0.0"]` to your project.clj file
 * `(:require [clj-template.html :refer :all])` to your project namespace
-  * Note that doing the above will collide with a few default `clojure.core` namespace functions, namely `map` and `meta`. To resolve this you can either namespace the import (i.e. something like `(:require [clj-template.html :as h])`) or reference Clojure map and meta functions as `clojure.core/map` and `clojure.core/meta` respectively.
+  * Note that doing the above will collide with a few default `clojure.core` namespace functions, namely `map` and `meta` (`time` as well for html5). To resolve this you can either namespace the import (i.e. something like `(:require [clj-template.html :as h])`, but that's no fun) or refer Clojure core in your namespace (more below for a brief primer).
+
+#### Referring Clojure
+
+To refer Clojure into a project you can use the following example namespace as a guide.
+
+```clojure
+(ns foo.bar
+  (:refer-clojure :rename {map clj-map meta clj-meta time clj-time})
+  (:require [clj-template.html5 :refer :all]))
+```
+
+This refers all `clojure.core` into the `foo.bar` namespace (substitute for your project) and renames...
+
+* `map` to `clj-map`
+* `meta` to `clj-meta`
+* and `time` to `clj-time`
 
 ## Usage
 

@@ -10,11 +10,11 @@ Gone are the days of learning a given templating engine's DSL or wondering wheth
 
 ## Key Features
 
-1. First class Clojure functions for bracket-attribute tags
-2. HTML and HTML5 support built in
-3. Dead simple to use
-4. Works with Ring and other Clojure webstack frameworks
-5. Support for generating user-defined tags
+* **First class Clojure functions** for bracket-attribute tags
+* **HTML and HTML5 support** built in
+* **Dead simple** to use
+* Works with Ring and other Clojure webstack frameworks
+* Support for generating user-defined tags
 
 ## Installation
 

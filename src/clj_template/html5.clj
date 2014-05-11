@@ -1,4 +1,5 @@
 (ns clj-template.html5
+  (:refer-clojure :rename {map clj-map meta clj-meta time clj-time})
   (:require [clj-template.core :as core])
   (:gen-class))
 

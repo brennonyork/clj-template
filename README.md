@@ -44,7 +44,7 @@ This refers all `clojure.core` into the `foo.bar` namespace (substitute for your
 
 `clj-template` makes it very simple to generate html. Assuming you've loaded `clj-template.html` into your namespace we can start with some very basic examples.
 
-#### Generating a simple webpage
+### Generating a simple webpage
 
 ```clojure
 (html

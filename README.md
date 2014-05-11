@@ -92,15 +92,15 @@ which renders...
 
 ## User-defined bracket-attribute tags
 
-`clj-template` is all based off of two core functions (in `core.clj` no less); those being `assoc-to-fn` and `assoc-to-fn-unbalanced`. Both functions take a vector of strings and then drop those strings as first-class functions into the currently called namespace. That said, if one wanted to generate bracket-attribute documents with balanced tags for:
+`clj-template` is all based off of two core functions (in `core.clj` no less); those being `assoc-to-fn` and `assoc-to-fn-unbalanced`. Both functions take a vector of strings and then drop those strings as first-class functions into the currently called namespace. That said, if one wanted to generate their own tags for a bracket-attribute document it would merely call those above functions. As an example we'll use balanced tags for:
 
-* addr
-* doc
-* text
+* `addr`
+* `doc`
+* `text`
 
 ...and unbalanced tags for:
 
-* name
+* `name`
 
 The code would then look as follows:
 

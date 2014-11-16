@@ -20,7 +20,7 @@ Gone are the days of learning a given templating engine's DSL or wondering wheth
 
 To jump in and get started simply add:
 
-* `[clj-template "1.0.0"]` to your project.clj file
+* `[clj-template "1.0.1"]` to your project.clj file
 * `(:require [clj-template.html :refer :all])` to your project namespace
   * Note that doing the above will collide with a few default `clojure.core` namespace functions, namely `map` and `meta` (`time` as well for html5). To resolve this you can either namespace the import (i.e. something like `(:require [clj-template.html :as h])`, but that's no fun) or refer Clojure core in your namespace (more below for a brief primer).
 

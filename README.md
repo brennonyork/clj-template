@@ -128,7 +128,7 @@ The code would then look as follows:
     <name first="Bill" last="Edwards" />
     <text>Some additional text</text>
   </addr>
-  <addr>
+  <addr ref="uri://localhost>
     <name first="Jim" last="Jones" />
   </addr>
 </doc>

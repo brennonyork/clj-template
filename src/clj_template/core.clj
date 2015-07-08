@@ -1,6 +1,12 @@
 (ns clj-template.core
-  (:require clojure.string)
+  (:require [clojure.string :as clj-str])
   (:gen-class))
+
+(defn gen-attributes
+  "Generate attributes based on attrs map"
+  [attrs]
+  (clj-str/join " " (for [[k v] attrs]
+                      (str (name k) "=\"" (name v) "\""))))
 
 (defn assoc-to-fn
   "Associates a given list of tags into clojure functions which will output bracket-attribute markup
@@ -13,16 +19,19 @@
    (map
     (fn [markup-tag]
       (eval
-       `(defn ~(symbol markup-tag) [& [~(symbol "attrs") & ~(symbol "body")]]
-          (let [[~(symbol "attrs") ~(symbol "body")]
-                (if (and (map? ~(symbol "attrs")) (not (empty? ~(symbol "attrs"))))
-                  [(str " " (clojure.string/join " " (for [[~(symbol "k") ~(symbol "v")] ~(symbol "attrs")]
-                                                       (str (name ~(symbol "k")) "=\"" ~(symbol "v") "\""))) ">")
-                   ~(symbol "body")]
-                  [">" (concat (if (not (empty? ~(symbol "attrs"))) [~(symbol "attrs")] []) ~(symbol "body"))])]
-            (if ~(symbol "body")
-              (str "<" ~markup-tag ~(symbol "attrs") (clojure.string/join " " ~(symbol "body")) "</" ~markup-tag ">")
-              (str "<" ~markup-tag ~(symbol "attrs") "</" ~markup-tag ">"))))))
+       `(defn ~(symbol markup-tag) [& [attrs# & body#]]
+          (let [[str-attrs# str-body#]
+                (if (and (map? attrs#)
+                         (not (empty? attrs#)))
+                  [(str " " (gen-attributes attrs#) ">")
+                   body#]
+                  [">" (concat (if (not (empty? attrs#))
+                                 [attrs#]
+                                 [])
+                               body#)])]
+            (if str-body#
+              (str "<" ~markup-tag str-attrs# (clj-str/join " " str-body#) "</" ~markup-tag ">")
+              (str "<" ~markup-tag str-attrs# "</" ~markup-tag ">"))))))
     tag-list)))
 
 (defn assoc-to-fn-unbalanced
@@ -38,10 +47,12 @@
    (map
     (fn [markup-tag]
       (eval
-       `(defn ~(symbol (str markup-tag "-")) [& [~(symbol "attrs") & ~(symbol "body")]]
-          (let [~(symbol "attrs")
-                (if (and (map? ~(symbol "attrs")) (not (empty? ~(symbol "attrs"))))
-                  (str " " (clojure.string/join " " (for [[~(symbol "k") ~(symbol "v")] ~(symbol "attrs")]
-                                                       (str (name ~(symbol "k")) "=\"" ~(symbol "v") "\""))) " />") " />")]
-            (str "<" ~markup-tag ~(symbol "attrs"))))))
+       `(defn ~(symbol (str markup-tag "-"))
+          [& [attrs# & body#]]
+          (let [str-attrs#
+                (if (and (map? attrs#)
+                         (not (empty? attrs#)))
+                  (str " " (gen-attributes attrs#) "/>")
+                  " />")]
+            (str "<" ~markup-tag str-attrs#)))))
     tag-list)))

@@ -52,7 +52,7 @@
           (let [str-attrs#
                 (if (and (map? attrs#)
                          (not (empty? attrs#)))
-                  (str " " (gen-attributes attrs#) "/>")
+                  (str " " (gen-attributes attrs#) " />")
                   " />")]
             (str "<" ~markup-tag str-attrs#)))))
     tag-list)))
